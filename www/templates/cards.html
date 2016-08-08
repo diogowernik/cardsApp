@@ -1,0 +1,9 @@
+<ion-view view-title="Cards">
+    <ion-content class="padding">
+        <div class="list">
+            <a ng-href="#/cards/{{ card.id }}" class="item" ng-repeat="card in cards.cards">
+                {{ card.title }}
+            </a>
+        </div>
+    </ion-content>
+</ion-view>

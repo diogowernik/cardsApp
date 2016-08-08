@@ -1,12 +1,18 @@
 angular
     .module('cardsApp')
-    .controller('CardsController', function(Cards) {
-        var _this = this;
-
-        Cards.getCards().then(function(response){
-            _this.cards = response.data;
-        }).catch(function(response){
-            //request was not successful
-            //handle the error
-        });
+    .controller('CardsController', function($scope, $http) {
+          $scope.result = "";
+          $http.get('http://yoga.brasilia.io/cards/from-subdomain/1.json')
+            .success(function(data, status, headers,config){
+              console.log('data success');
+              console.log(data); // for browser console
+              $scope.result = data; // for UI
+            })
+            .error(function(data, status, headers,config){
+              console.log('data error');
+            })
+            .then(function(result){
+              things = result.data;
+            });
     });
+    
